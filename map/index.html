@@ -4,6 +4,14 @@
     <title>OAMK indoor</title>
 
     <link rel="stylesheet" href="leaflet.css" />
+    <!-- For markers -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
     <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
 
@@ -49,6 +57,11 @@
             zoom: 19
         });
 
+        $.getJSON("data2.json", function(data) {
+            var marker = L.marker([data.latitude, data.longitude]).addTo(map);
+            marker.bindPopup("Time : " + data.timestamp + " Height : " + data.height).openPopup();
+        });
+                
         // This example uses a GeoJSON FeatureCollection saved to a file
         // (data.json), see the other example (live/index.html) for details on
         // fetching data using the OverpassAPI (this is also how the data in
@@ -69,7 +82,7 @@
                 style: function(feature) {
                     var fill = 'white';
 
-                    if (feature.properties.tags.buildingpart === 'corridor') {
+                    if (feature.properties.tags.buildingpart === 'hall') {
                         fill = '#169EC6';
                     } else if (feature.properties.tags.buildingpart === 'verticalpassage') {
                         fill = '#0A485B';

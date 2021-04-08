@@ -1,0 +1,11 @@
+{
+    "deviceID": "Raspberry project",
+    "height": "5",
+    "latitude": "64.99307222222222",
+    "level": "1",
+    "longitude": "25.422475",
+    "payload": {
+        "temperature": "40.21"
+    },
+    "timestamp": "1617915632.2361228"
+}
