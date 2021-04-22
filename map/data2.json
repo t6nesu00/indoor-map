@@ -1,11 +1,30 @@
+
 {
-    "deviceID": "Raspberry project",
-    "height": "5",
-    "latitude": "64.99307222222222",
-    "level": "1",
-    "longitude": "25.422475",
-    "payload": {
-        "temperature": "40.21"
-    },
-    "timestamp": "1617915632.2361228"
+    "geoData": [
+        {
+        "deviceID": "Raspberry project",
+        "height": "5",
+        "latitude": "65.06069728830542",
+        "level": "1",
+        "longitude": "25.46535061690912",
+        "payload": {
+            "temperature": "40.21"
+        },
+        "timestamp": "1618791605.652732"
+        },
+        {
+        "deviceID": "Raspberry projectSecond",
+        "height": "5",
+        "latitude": "65.06069828842542",
+        "level": "2",
+        "longitude": "25.46599061692912",
+        "payload": {
+            "temperature": "40.21"
+        },
+        "timestamp": "161879505.652732"
+        }
+    ]
+        
 }
+
+

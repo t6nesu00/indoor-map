@@ -16,10 +16,10 @@ while True:
     data= {}
     data['payload'] = {}
     data['payload']['temperature']= '40.21' 
-    data['latitude'] = '64.99307222222222'
+    data['latitude'] = '65.06069728830542'
     data['height'] = '5'
     data['level'] = '1'
-    data['longitude'] = '25.422475'
+    data['longitude'] = '25.46535061690912'
     data['deviceID'] = 'Raspberry project'
     data['timestamp'] = str(time.time())
 

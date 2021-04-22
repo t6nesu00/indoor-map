@@ -38,12 +38,23 @@
 </head>
 <body>
     <div id="map"></div>
-
     <script src="jquery.min.js"></script>
     <script src="leaflet-src.js"></script>
     <script src="../leaflet-indoor.js"></script>
     <script type="text/JavaScript">
 
+            // displaying multiple popups at same time
+            L.Map = L.Map.extend({
+            openPopup: function(popup) {
+                //        this.closePopup();  // just comment this
+                this._popup = popup;
+
+                return this.addLayer(popup).fire('popupopen', {
+                    popup: this._popup
+                });
+            }
+            }); 
+        /***  end of hack ***/
         // Create the map
         var osmUrl = '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
             osm = new L.TileLayer(osmUrl, {
@@ -58,10 +69,17 @@
         });
 
         $.getJSON("data2.json", function(data) {
-            var marker = L.marker([data.latitude, data.longitude]).addTo(map);
-            marker.bindPopup("Time : " + data.timestamp + " Height : " + data.height).openPopup();
-        });
-                
+        
+            // length of data is equal to number of sensors    
+            var sensors = data.geoData.length;
+            for(let i = 0; i <= sensors; i++) {
+                var marker = L.marker([data.geoData[i].latitude, data.geoData[i].longitude]).addTo(map);
+                marker.bindPopup("Time : " + data.geoData[i].timestamp + " Height : " + data.geoData[i].height 
+                                + "<br>Level : " + data.geoData[i].level).openPopup();
+            }
+            
+        }); 
+
         // This example uses a GeoJSON FeatureCollection saved to a file
         // (data.json), see the other example (live/index.html) for details on
         // fetching data using the OverpassAPI (this is also how the data in
