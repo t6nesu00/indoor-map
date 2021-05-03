@@ -1,1 +1,2 @@
-"# indoor-map with leafletjs" 
+# Indoor map with LeafletJS
+
