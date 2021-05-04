@@ -139,6 +139,49 @@ Here is sample data created using geojson.io that represent a straight line.
 }
 ```
 
+## Demo Product
+
+Here is the user-interface of the web map. The markers are the location of the sensors and the popup information is real time information and received from the sensors.
+The web user interface was developed using JavaScript. 
+
+![](https://github.com/t6nesu00/indoor-map/blob/main/map-product.jpg)
+
+The information in the popups are added from data2.json file where sensor messages are stored.
+```javascript
+ $.getJSON("data2.json", function(data) {
+             ...............
+            // lines of code to create the marker and add information
+            // from data2.json file      
+            ................
+        }); 
+
+```
+
+Below data is the sample data send by the sensors, the data is changed to make it usable for JavaScript and saved in data2.json file.
+
+{'payload': {'temperature': '40.21'}, 'latitude': '65.06069728830542', 'height': '5', 'level': '1', 'longitude': '25.46535061690912', 'deviceID': 'Raspberry project', 'timestamp': '1619812597.9148433'}
+
+By default, leaflet does not allow to display two popups simultaneously. To enable this feature use following lines of code.
+
+```javascript
+// displaying multiple popups at same time
+            L.Map = L.Map.extend({
+            openPopup: function(popup) {
+                // this.closePopup(); 
+                this._popup = popup;
+
+                return this.addLayer(popup).fire('popupopen', {
+                    popup: this._popup
+                });
+            }
+            });
+```
+
+## Possibile improvements
+
+The coordinates (Latitude and Longitude) of rooms are generated using http://geojson.io however these are not hundred percent accurate. There is possibility that these values can be tested and altered with small differences to make it accurate. 
+The user interface is still not finalized this is just the demo to ensure the working of sensors with real time data. The user interface could be changed to more friendly and stylish view.
+The format of json file should match exactly with the data present in data2.json otherwise popups will have error while displaying the data. This arises the complexity in case sensor data format are changed or modified. 
 
 
 
