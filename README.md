@@ -87,6 +87,58 @@ The numbers 65.06 and 25.46 are the latitude and longitude value.
 It is also possible to add other things, such as circle and polygon to the map.
 For more detail check the link [Leaflet-quick-start-guide](https://leafletjs.com/examples/quick-start/)
 
+## Create the map
+
+For the map features Leaflet is used with openstreetmap which is free to use. Visit its official page to explore it more.[Openstreetmap](https://www.openstreetmap.org)
+
+```html
+var osmUrl = '//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            osm = new L.TileLayer(osmUrl, {
+                maxZoom: 22,
+                attribution: "Map data &copy; OpenStreetMap contributors"
+            });
+
+        var map = new L.Map('map', {
+            layers: [osm],
+            center: new L.LatLng(65.061, 25.467),
+            zoom: 19
+        });
+```
+
+For indoor, leaflet indoor plugin was used to develop indoor corridors and rooms.
+Leaflet indoor plugin provides tools to create the indoor map with leaflet.
+For more detail and use visit the link. 
+https://github.com/cbaines/leaflet-indoor
+
+For creating latitude and longitude mapbox.com or geojson.io can be used.
+Here is sample data created using geojson.io that represent a straight line.
+
+```html 
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+          ........
+          ........    
+   "geometry": {
+          ........
+          ........
+          "coordinates": [
+            [
+              25.463910698890686,
+              65.05917831233543
+            ],
+            [
+              25.464447140693665,
+              65.05917831233543
+            ]
+          ]
+        }
+      }
+    ]
+}
+```
+
 
 
 
