@@ -13,8 +13,6 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
 
-    <!--[if lte IE 8]><link rel="stylesheet" href="libs/leaflet.ie.css" /><![endif]-->
-
     <style type="text/css">
         body {
           padding: 0;
@@ -46,7 +44,7 @@
             // displaying multiple popups at same time
             L.Map = L.Map.extend({
             openPopup: function(popup) {
-                //        this.closePopup();  // just comment this
+                // this.closePopup(); 
                 this._popup = popup;
 
                 return this.addLayer(popup).fire('popupopen', {
@@ -74,7 +72,7 @@
             var sensors = data.geoData.length;
             for(let i = 0; i <= sensors; i++) {
                 var marker = L.marker([data.geoData[i].latitude, data.geoData[i].longitude]).addTo(map);
-                marker.bindPopup("Time : " + data.geoData[i].timestamp + " Height : " + data.geoData[i].height 
+                marker.bindPopup("Device Id: " + data.geoData[i].deviceID + "<br>Time : " + data.geoData[i].timestamp + " Height : " + data.geoData[i].height 
                                 + "<br>Level : " + data.geoData[i].level).openPopup();
             }
             
